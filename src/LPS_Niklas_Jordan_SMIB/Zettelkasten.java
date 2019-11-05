@@ -2,8 +2,9 @@ package LPS_Niklas_Jordan_SMIB;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 
-public class Zettelkasten {
+public abstract class Zettelkasten implements Iterator {
     private ArrayList<Medium> myZettelkasten = new ArrayList<>();
 
     public boolean AddMedium(Medium data) {
