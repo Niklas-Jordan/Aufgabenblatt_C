@@ -9,17 +9,20 @@ public class CD extends Medium {
         this.Label = _Label;
         this.Kuenstler = _Kuenstler;
     }
-    public String getLabel(){
+
+    public String getLabel() {
         return Label;
     }
-    public String getKuenstler(){
+
+    public String getKuenstler() {
         return Kuenstler;
     }
 
-    public void setLabel(String Label){
+    public void setLabel(String Label) {
         this.Label = Label;
     }
-    public void setKuenstler(String Kuenstler){
+
+    public void setKuenstler(String Kuenstler) {
         this.Kuenstler = Kuenstler;
     }
 
@@ -36,5 +39,3 @@ public class CD extends Medium {
                 .toString();
     }
 }
-
-

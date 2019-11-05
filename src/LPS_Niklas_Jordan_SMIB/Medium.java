@@ -4,6 +4,7 @@ package LPS_Niklas_Jordan_SMIB;
  * The type Medium.
  */
 public abstract class Medium {
+
     /**
      * The Titel.
      */
@@ -24,7 +25,7 @@ public abstract class Medium {
      *
      * @return string string
      */
-    public String getTitel(){
+    public String getTitel() {
         return Titel;
     }
 
@@ -43,4 +44,11 @@ public abstract class Medium {
      * @return the string
      */
     public abstract String calculateRepresentation();
+
+//TODO: Ueberarbeiten, unvollstaendig
+    @Override
+    public int compareTo(Medium data) {
+
+        return 0;
+    }
 }

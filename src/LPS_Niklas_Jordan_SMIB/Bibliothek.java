@@ -1,5 +1,7 @@
 package LPS_Niklas_Jordan_SMIB;
 
+import java.util.ArrayList;
+
 /**
  * The type Bibliothek.
  */
@@ -11,17 +13,20 @@ public class Bibliothek {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        Medium[] autoMed = new Medium[4];
-        autoMed[0] = new Buch(2004, "Bibliographisches Institut, Mannheim", "3-411-01013-0", "-", "Duden 01. Die deutsche Rechtschreibung");
-        autoMed[1] = new CD("Apple (Bea (EMI)", "The Beatles", "1");
-        autoMed[2] = new Zeitschrift("0038-7452", 54, 6, "Der Spiegel");
-        autoMed[3] = new ElektronischesMedium("http://www.hochschule-stralsund.de", "Hochschule Stralsund");
+        ArrayList <Medium> myZettelkasten = new ArrayList<>();
+        myZettelkasten.add(new Buch(2004, "Bibliographisches Institut, Mannheim", "3-411-01013-0", "-", "Duden 01. Die deutsche Rechtschreibung"));
+        myZettelkasten.add(new CD("Apple (Bea (EMI)", "The Beatles", "1"));
+        myZettelkasten.add(new Zeitschrift("0038-7452", 54, 6, "Der Spiegel"));
+        myZettelkasten.add(new ElektronischesMedium("http://www.hochschule-stralsund.de", "Hochschule Stralsund"));
 
+//TODO: Ueberarbeiten, unvollstaendig/ fehlerhaft
         for (int i = 0; i < 4; i++)
-            System.out.println(autoMed[i].calculateRepresentation());
+            System.out.println(myZettelkasten);
 
-        for (Medium medium : autoMed) {
-            System.out.println(medium.calculateRepresentation());
+        for (Medium : myZettelkasten) {
+            System.out.println(myZettelkasten);
         }
+
+
     }
 }
