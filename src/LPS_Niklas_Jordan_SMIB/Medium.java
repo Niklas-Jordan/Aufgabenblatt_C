@@ -17,7 +17,7 @@ public abstract class Medium implements Comparable<Medium>{
      * @param _Titel the titel
      */
     public Medium(String _Titel) {
-        setTitel(Titel);
+        setTitel(_Titel);
     }
 
     /**
@@ -34,10 +34,9 @@ public abstract class Medium implements Comparable<Medium>{
      *
      * @param Titel the titel
      */
-    //TODO: setTitel Fehlermeldung/ Exception schreiben
     public void setTitel(String Titel) {
         if (Titel == null){
-            System.out.println("Titel existiert nicht!");
+            throw new IllegalArgumentException("Titel existiert nicht!");
         } else {
             this.Titel = Titel;
         }

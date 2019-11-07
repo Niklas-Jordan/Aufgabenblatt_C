@@ -16,8 +16,12 @@ public class Bibliothek {
         zettelkasten.addMedium(new CD("Apple (Bea (EMI)", "The Beatles", "1"));
         zettelkasten.addMedium(new Zeitschrift("0038-7452", 54, 6, "Der Spiegel"));
         zettelkasten.addMedium(new ElektronischesMedium("http://www.hochschule-stralsund.de", "Hochschule Stralsund"));
+        zettelkasten.addMedium(new CD("Apple (Bea (EMI)", "The Beatles", "1"));
+        zettelkasten.dropMedium("1");
+       // zettelkasten.findSoloMedium("0"); //C.7
+       // zettelkasten.findMedium("0"); //C.7
+        zettelkasten.sort(true); //Aufgabe C.5
 
-        zettelkasten.sort(true); //Aufgabe C5
 
         for (Medium data : zettelkasten) {
             System.out.println(data.calculateRepresentation());

@@ -17,9 +17,14 @@ public class Zettelkasten implements Iterable<Medium> {
         return true;
     }
 
-    public boolean dropMedium(String titel) {
-        return myZettelkasten.remove(findMedium(titel));
-    }
+    public boolean dropMedium(String titel) throws DuplicateEntryException {
+            for (Medium data : myZettelkasten) {
+               if (data.getTitel().equals(titel)) {
+                   throw new DuplicateEntryException("Eingegebener Titel ist nur einmal vorhanden!");
+               }
+           }
+         return myZettelkasten.remove(findSoloMedium(titel));
+        }
 
     private Boolean order = null;
 
