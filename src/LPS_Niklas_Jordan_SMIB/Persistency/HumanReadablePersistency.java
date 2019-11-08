@@ -1,7 +1,6 @@
 package LPS_Niklas_Jordan_SMIB.Persistency;
 
 import LPS_Niklas_Jordan_SMIB.Medium;
-import LPS_Niklas_Jordan_SMIB.Persistency.Persistency;
 import LPS_Niklas_Jordan_SMIB.Zettelkasten;
 
 import java.io.*;
