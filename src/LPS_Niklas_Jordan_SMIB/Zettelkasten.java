@@ -5,19 +5,39 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * The type Zettelkasten.
+ * In Zusammenarbeit mit Florian Eimann
+ */
 public class Zettelkasten implements Iterable<Medium> {
+    /**
+     * The My zettelkasten.
+     */
     ArrayList<Medium> myZettelkasten = new ArrayList<>();
 
     public Iterator iterator() {
         return myZettelkasten.iterator();
     }
 
+    /**
+     * Add medium boolean.
+     * fügt Daten/Medien ohne Reihenfolge/ Sortierung zur Arraylist hinzu
+     * @param data the data
+     * @return boolean
+     */
     boolean addMedium(Medium data) {
         myZettelkasten.add(data);
         order = null;
         return true;
     }
 
+    /**
+     * Drop medium.
+     * Programm vergleicht Titel, sobald sich ein Titel doppelt, wird die Exception ausgegeben
+     * Sollte der gesuchte Titel nicht vorhanden sein in der Arraylist, wird dies auch zurückgegben
+     * @param titel the titel
+     * @throws DuplicateEntryException the duplicate entry exception
+     */
     public void dropMedium(String titel)throws DuplicateEntryException {
         ArrayList<Medium> copies = new ArrayList<>();
         int data = 0;
@@ -40,18 +60,13 @@ public class Zettelkasten implements Iterable<Medium> {
         }
     }
 
-    public boolean dropMedium(String titel, int index) throws DuplicateEntryException {
-        ArrayList<Medium> copies = new ArrayList<>();
-        for(Medium data : myZettelkasten) {
-            if(data.getTitel() == titel) {
-                copies.add(data);
-            }
-        }
-        myZettelkasten.remove(copies.get(index));
-        System.out.println(copies);
-        return true;
-    }
-
+    /**
+     * Drop medium boolean.
+     * bestätigt man in der Main diese Aussage mit "ja", wird der gesammte Inhalt der Arraylist gelöscht, wo die Kopien reingestellt werden
+     * @param titel       the titel
+     * @param alleLöschen the alle löschen
+     * @return the boolean
+     */
     public boolean dropMedium(String titel, String alleLöschen) {
         if(alleLöschen == "ja") {
             boolean gelöscht = false;
@@ -60,13 +75,19 @@ public class Zettelkasten implements Iterable<Medium> {
             }
             return gelöscht;
         } else {
-            System.out.println("Geben sie 'ja' ein, um alle Duplikate zu löschen!");
+            System.out.println("Geben sie 'ja' ein, um alle Dublikate zu löschen!");
         }
         return true;
     }
 
     private Boolean order = null;
 
+    /**
+     * Sort boolean.
+     * sortiert die Liste alphabetisch aufsteigend, wenn aufsteigend = true, ansonsten alphabetisch absteigend
+     * @param aufsteigend the aufsteigend
+     * @return the boolean
+     */
     boolean sort(boolean aufsteigend) {
         if (aufsteigend == true) {
             if (order != null && order) {
@@ -83,6 +104,12 @@ public class Zettelkasten implements Iterable<Medium> {
         return true;
     }
 
+    /**
+     * Find solo medium medium.
+     * findet einzelnes Medium anhand des eingegebenen Titels
+     * @param titel the titel
+     * @return the medium
+     */
     public Medium findSoloMedium(String titel) {
         for (Medium data : myZettelkasten) {
             if (data.getTitel().equals(titel)) {
@@ -92,6 +119,12 @@ public class Zettelkasten implements Iterable<Medium> {
         return null;
     }
 
+    /**
+     * Find medium list.
+     * Fügt die Daten/Medien anhand ihrer Titel einer Arraylist hinzu und gibt sie in der unten definierten Reihenfolge in der Konsole aus
+     * @param titel the titel
+     * @return the list
+     */
     public List<Medium> findMedium(String titel) {
         int i = 0;
         List<Medium> copies = new ArrayList<>();

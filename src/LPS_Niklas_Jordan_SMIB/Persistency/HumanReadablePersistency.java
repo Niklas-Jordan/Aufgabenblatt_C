@@ -6,6 +6,9 @@ import LPS_Niklas_Jordan_SMIB.Zettelkasten;
 import java.io.*;
 
 
+/**
+ * The type Human readable persistency.
+ */
 public class HumanReadablePersistency implements Persistency {
 
     public void save(Zettelkasten zk, String dateiname) throws IOException {

@@ -31,7 +31,7 @@ public abstract class Medium implements Comparable<Medium>{
 
     /**
      * Sets titel.
-     *
+     * wenn kein Titel eingegeben wird, wird Exception geworfen, dass der Titel fehlt
      * @param Titel the titel
      */
     public void setTitel(String Titel) {
@@ -49,7 +49,7 @@ public abstract class Medium implements Comparable<Medium>{
      */
     public abstract String calculateRepresentation();
 
-    /**
+    /** Vergleicht die eingegebenen Titel miteinander
      * @param data
      * @return
      */

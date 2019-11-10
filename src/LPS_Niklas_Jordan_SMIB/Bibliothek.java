@@ -9,7 +9,8 @@ import java.sql.*;
 public class Bibliothek {
     /**
      * The entry point of application.
-     *
+     * Datenbank + Aufbau basiert auf der Vorlesung von Dr. Pieper
+     * In Zusammenarbeit mit Florian Eimann
      * @param args the input arguments
      */
     public static void main(String[] args) {
@@ -21,24 +22,23 @@ public class Bibliothek {
         zettelkasten.addMedium(new ElektronischesMedium("http://www.hochschule-stralsund.de", "Hochschule Stralsund"));
         zettelkasten.addMedium(new CD("Apple (Bea (EMI)", "The Beatles", "1"));
         //zettelkasten.dropMedium("1");
-        //zettelkasten.findSoloMedium("Der Spiegel"); //C.7
-        zettelkasten.findMedium("Der Spiegel"); //C.7
-        zettelkasten.sort(true); //Aufgabe C.5
+        //zettelkasten.findSoloMedium("Der Spiegel");
+        //zettelkasten.findMedium("Der Spiegel");
+        zettelkasten.sort(true); //Aufgabe
 
 
         for (Medium data : zettelkasten) {
             System.out.println(data.calculateRepresentation());
         }
 
-        //gesamte Datenbank basiert auf der Vorlesung von Dr. Pieper
-        final String query = "SELECT * FROM MEDIEN WHERE TYP = 'Buch'";              //Ab hier beginnt die Datenbank, SQL Anweisung zum auswählen was angezeigt werden soll
+        final String query = "SELECT * FROM MEDIEN WHERE TYP = 'Buch'";              //Beginn der Datenbank, SQL Anweisung zum auswählen was angezeigt werden soll
 
         try (
-                Connection con = createConnection();                                 //stellt Verbidnung zur Datenbank her, hier wird ausgegebenn was in der Datenbank alles exisitiert (und der SQL anweisung entspricht
+                Connection con = createConnection();                                 //Verbindung zur Datenbank her, hier wird ausgegebenn was in der Datenbank alles exisitiert (entsprechend der SQL Anweisung)
                 Statement statement = con.createStatement();) {
             ResultSet result = statement.executeQuery(query);
             while (result.next()) {                                                  //while Schleife zum durchgehen der gesamten Datenbank
-                String id = result.getString("ID");                       //einzelne Kategorien die jedes Objekt hat (wenn das Obekt diese nicht besitzt wird es automatisch auf null gesetzt)
+                String id = result.getString("ID");                               //einzelne Kategorien die jedes Objekt hat (wenn das Obekt diese nicht besitzt wird es automatisch auf null gesetzt)
                 String typ = result.getString("TYP");
                 String titel = result.getString("TITEL");
                 String label = result.getString("LABEL");
@@ -56,16 +56,16 @@ public class Bibliothek {
             e.printStackTrace();
         }
 
-        try (                                                             //hier werden Daten erstellt und in die Datenbank eingelesen
-                                                                          Connection con = createConnection();
-                                                                          Statement statement = con.createStatement();) {
+        try (                                                                     //hier werden Daten erstellt und in die Datenbank eingelesen
+            Connection con = createConnection();
+            Statement statement = con.createStatement();) {
 
 
             DatabaseMetaData metaData = con.getMetaData();
             ResultSet tables = metaData.getTables(null, null, "Medien", null);
 
-            if (!tables.next()) {
-                statement.execute(db());               //wenn Datenbank noch aktuell ist wird sie nicht geupdatet
+            if (tables.next()) {
+                statement.execute(db());                                         //wenn Datenbank noch aktuell ist wird sie nicht geupdatet
             }
 
             statement.executeUpdate(buildInsertStatement("CD", "4", "Apple", "Test"));             //einfügen der Elemente in die Datenbank

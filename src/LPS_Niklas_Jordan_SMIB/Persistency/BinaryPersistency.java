@@ -4,6 +4,9 @@ import LPS_Niklas_Jordan_SMIB.Zettelkasten;
 
 import java.io.*;
 
+/**
+ * The type Binary persistency.
+ */
 public class BinaryPersistency implements Persistency {
 
     public void save(Zettelkasten zk, String dateiname) throws IOException {
