@@ -104,13 +104,13 @@ public class Zettelkasten implements Iterable<Medium> {
         for(Medium data : myZettelkasten) {
             if(data.getTitel().equals(titel)) {
                 copies.add(data);
-                if(data.getClass().getName() == "Zeitschrift") {
+                if(data.getClass().getName() == "com.LPS_SMIB_Niklas_Jordan_SMIB.Zeitschrift") {
                     Zeitschrift.add(data);
-                }else if(data.getClass().getName() == "com.company.CD") {
+                }else if(data.getClass().getName() == "com.LPS_SMIB_Niklas_Jordan_SMIB.CD") {
                     CD.add(data);
-                }else if(data.getClass().getName() == "com.company.Buch") {
+                }else if(data.getClass().getName() == "LPS_SMIB_Niklas_Jordan_SMIB.Buch") {
                     Buch.add(data);
-                }else if(data.getClass().getName() == "com.company.ElektronischesMedium") {
+                }else if(data.getClass().getName() == "LPS_SMIB_Niklas_Jordan_SMIB.ElektronischesMedium") {
                     ElektronischesMedium.add(data);
                 } else {
                     i++;
